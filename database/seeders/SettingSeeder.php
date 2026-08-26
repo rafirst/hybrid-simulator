@@ -12,13 +12,13 @@ class SettingSeeder extends Seeder
         $settings = [
             [
                 'key' => 'app_title',
-                'value' => 'HYBRID SYSTEM SIMULATOR',
+                'value' => 'CARA KERJA MESIN HYBRID',
                 'type' => 'string',
                 'description' => 'Judul utama aplikasi simulator'
             ],
             [
                 'key' => 'app_subtitle',
-                'value' => 'Pelajari cara kerja sistem hybrid canggih',
+                'value' => 'Panduan interaktif memahami sistem penggerak ramah lingkungan.',
                 'type' => 'string',
                 'description' => 'Sub judul penjelasan simulator'
             ],

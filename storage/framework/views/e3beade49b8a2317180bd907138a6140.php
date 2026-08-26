@@ -5,7 +5,7 @@
     </div>
 
     <div class="kondisi-list">
-        {{-- 1. Engine Status --}}
+        
         <div class="kondisi-item">
             <div class="kondisi-name" id="nameEngine">
                 <div class="kondisi-icon" id="iconEngine">
@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        {{-- 2. Electric Motor (MG2) Status --}}
+        
         <div class="kondisi-item">
             <div class="kondisi-name" id="nameMg2">
                 <div class="kondisi-icon" id="iconMg2">
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        {{-- 3. Battery Status --}}
+        
         <div class="kondisi-item border-none">
             <div class="kondisi-name" id="nameBattery">
                 <div class="kondisi-icon" id="iconBattery">
@@ -54,3 +54,4 @@
         </div>
     </div>
 </div>
+<?php /**PATH C:\laragon\www\hybrid-simulator-git\resources\views/simulator/partials/component_status.blade.php ENDPATH**/ ?>

@@ -9,6 +9,7 @@
         {{-- Left Column: Mode Selector --}}
         <div class="left-col">
             @include('simulator.partials.mode_selector')
+            @include('simulator.partials.bottom_controls')
         </div>
 
         {{-- Center Column: 3D Car Visualizer & Description --}}
@@ -25,6 +26,4 @@
         </div>
     </div>
 
-    {{-- Bottom Bar: Power & Gear Selector --}}
-    @include('simulator.partials.bottom_controls')
 @endsection

@@ -24,3 +24,4 @@
         </div>
     </div>
 </div>
+<?php /**PATH C:\laragon\www\hybrid-simulator-git\resources\views/simulator/partials/mode_description.blade.php ENDPATH**/ ?>

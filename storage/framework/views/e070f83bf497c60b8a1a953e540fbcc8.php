@@ -4,7 +4,7 @@
 </div>
 
 <div class="mode-cards-container">
-    {{-- 1. START / IDLE --}}
+    
     <div class="mode-btn disabled" id="btn-Idle" data-mode="Idle">
         <div class="mode-card-indicator"></div>
         <div class="mode-icon-wrapper">
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    {{-- 2. LOW SPEED --}}
+    
     <div class="mode-btn disabled" id="btn-Low" data-mode="Low">
         <div class="mode-card-indicator"></div>
         <div class="mode-icon-wrapper">
@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    {{-- 3. ACCELERATION --}}
+    
     <div class="mode-btn disabled" id="btn-Accel" data-mode="Acceleration">
         <div class="mode-card-indicator"></div>
         <div class="mode-icon-wrapper">
@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    {{-- 4. CONSTANT SPEED --}}
+    
     <div class="mode-btn disabled" id="btn-Const" data-mode="Constant">
         <div class="mode-card-indicator"></div>
         <div class="mode-icon-wrapper">
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    {{-- 5. DECELERATION --}}
+    
     <div class="mode-btn disabled" id="btn-Decel" data-mode="Deceleration">
         <div class="mode-card-indicator"></div>
         <div class="mode-icon-wrapper">
@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    {{-- 6. REVERSE --}}
+    
     <div class="mode-btn disabled" id="btn-Rev" data-mode="Reverse">
         <div class="mode-card-indicator"></div>
         <div class="mode-icon-wrapper">
@@ -88,3 +88,4 @@
         </div>
     </div>
 </div>
+<?php /**PATH C:\laragon\www\hybrid-simulator-git\resources\views/simulator/partials/mode_selector.blade.php ENDPATH**/ ?>

@@ -4,18 +4,16 @@
  */
 
 let scene, camera, renderer, controls;
-let carGroup, carModel, fallbackBodyMesh, engineMesh, mg2Mesh, batteryMesh;
+let carGroup, carModel, fallbackBodyMesh, engineMesh, mg2Mesh, batteryMesh, stageMesh;
 let wheels = [];
 let flowPaths = []; 
 let bodyPanelMaterials = [];
 let fixedBlackFrontMaterials = [];
 let currentModelObjectUrl = null;
 
-const bodyCustomize = { color: 'blue', opacity: 0.5 };
+const bodyCustomize = { color: 'white', opacity: 0.5 };
 const bodyColorMap = {
-    red: 0xef4444,
-    white: 0xf8fafc,
-    blue: 0x14b8ff
+    white: 0xf8fafc
 };
 
 // 3D Component Global Coordinates matching Veloz Body Geometry
@@ -81,7 +79,7 @@ function applyFixedFrontMaterials() {
 }
 
 function applyBodyCustomization() {
-    const selectedColor = bodyColorMap[bodyCustomize.color] || bodyColorMap.blue;
+    const selectedColor = bodyColorMap[bodyCustomize.color] || bodyColorMap.white;
     bodyPanelMaterials.forEach((material) => {
         if (material.map) material.map = null;
         if ('vertexColors' in material) material.vertexColors = false;
@@ -196,7 +194,7 @@ function loadVelozModelFromUrl(modelUrl, modelUrls, urlIndex) {
             if (loadingBadge) loadingBadge.style.display = 'none';
 
             const uploadStatus = document.getElementById('uploadStatus');
-            if (uploadStatus) uploadStatus.textContent = 'Veloz.glb';
+            if (uploadStatus) uploadStatus.textContent = 'MOBIL: VELOZ HYBRID';
         },
         (xhr) => {
             if (loadingBadge && xhr.total > 0) {
@@ -221,7 +219,7 @@ function init3DCar() {
     if (!container) return;
     
     scene = new THREE.Scene();
-    scene.background = new THREE.Color('#2eb6c6'); 
+    scene.background = new THREE.TextureLoader().load('/images/hybrid-bg.png');
     
     camera = new THREE.PerspectiveCamera(30, container.clientWidth / container.clientHeight, 0.1, 1000);
     camera.position.set(40, 15, 55); 
@@ -252,10 +250,10 @@ function init3DCar() {
 
     // Stage / Turntable Platform
     const stageGeo = new THREE.CylinderGeometry(24, 24, 0.5, 64);
-    const stageMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.9 });
-    const stage = new THREE.Mesh(stageGeo, stageMat);
-    stage.position.y = -6;
-    scene.add(stage);
+    const stageMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.9, transparent: true });
+    stageMesh = new THREE.Mesh(stageGeo, stageMat);
+    stageMesh.position.y = -6;
+    scene.add(stageMesh);
 
     // Procedural Fallback Body (only visible while GLB is loading)
     const shape = new THREE.Shape();
@@ -279,7 +277,7 @@ function init3DCar() {
     bodyGeo.computeVertexNormals();
 
     const carMat = new THREE.MeshPhysicalMaterial({
-        color: 0x0ea5e9, transparent: true, opacity: 0.94, 
+        color: 0x00e676, transparent: true, opacity: 0.94, 
         roughness: 0.1, transmission: 0.8, thickness: 0.5, 
         side: THREE.DoubleSide, depthWrite: false
     });
@@ -518,6 +516,13 @@ function update3DLabels() {
 function animate3D() {
     requestAnimationFrame(animate3D);
     if (controls) controls.update();
+
+    if (stageMesh && camera) {
+        const cameraHeightRatio = camera.position.y / camera.position.length();
+        stageMesh.material.opacity = cameraHeightRatio > 0.45
+            ? Math.max(0, 1 - ((cameraHeightRatio - 0.45) / 0.25))
+            : 1;
+    }
     
     if (window.simState && window.simState.currentSpeed > 0 && window.simState.isPoweredOn && window.simState.mode !== 'Idle') {
         const rotationSpeed = (window.simState.mode === 'Reverse' ? -1 : 1) * (window.simState.currentSpeed * 0.004);
@@ -575,11 +580,11 @@ function update3DVisuals(data, modeId) {
     updateGroupColors(mg2Mesh, data.mg2, colorOnElec);
     updateGroupColors(batteryMesh, data.battery, colorOnElec);
 
-    const updateLbl = (elId, isOn) => {
+    const updateLbl = (elId, isOn, statusText = null) => {
         const span = document.getElementById(elId);
         if (!span) return;
         if(isOn) {
-            span.textContent = '(AKTIF)';
+            span.textContent = statusText || '(AKTIF)';
             span.className = 'lbl-on';
         } else {
             span.textContent = '(MATI)';
@@ -588,7 +593,10 @@ function update3DVisuals(data, modeId) {
     };
     updateLbl('st3dEngine', data.engine);
     updateLbl('st3dMg2', data.mg2);
-    updateLbl('st3dBattery', data.battery);
+    const batteryStatus = modeId === 'Constant' || modeId === 'Deceleration'
+        ? '(SELF CHARGING)'
+        : null;
+    updateLbl('st3dBattery', data.battery, batteryStatus);
 
     const miniEngBox = document.getElementById('miniEngBox');
     if (miniEngBox) {

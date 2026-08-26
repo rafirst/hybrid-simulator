@@ -1,5 +1,5 @@
 <div class="panel car-main-display" id="panelCarCenter">
-    {{-- Active Mode Floating HUD Badge --}}
+    
     <div class="active-mode-label">
         <div class="mode-label-header">
             <span class="mode-pulse-dot"></span>
@@ -8,7 +8,7 @@
         <h2 id="displayModeTitle" class="mode-title-glow">MATI</h2>
     </div>
 
-    {{-- Top Right Legend for Flows --}}
+    
     <div class="center-legend">
         <div class="leg-item leg-elec">
             <span class="flow-pill-indicator elec-glow"></span>
@@ -24,11 +24,11 @@
         </div>
     </div>
 
-    {{-- Three.js 3D Interactive Canvas Container --}}
+    
     <div class="big-car-container" id="car3dContainer">
         <div class="model-loading" id="modelLoading">SISTEM 3D SIAP</div>
 
-        {{-- 3D Dynamic Floating Pinpoint Labels --}}
+        
         <div class="label-3d" id="lbl3dEngine">
             <div class="lbl-icon-pin"></div>
             <div class="lbl-text-wrap">
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    {{-- Bottom Customize Body Bar --}}
+    
     <div class="customize-wrap">
         <button class="customize-btn" id="btnCustomize">CUSTOMIZE</button>
         <div class="customize-panel" id="customizePanel">
@@ -95,3 +95,4 @@
         </div>
     </div>
 </div>
+<?php /**PATH C:\laragon\www\hybrid-simulator-git\resources\views/simulator/partials/car_display.blade.php ENDPATH**/ ?>

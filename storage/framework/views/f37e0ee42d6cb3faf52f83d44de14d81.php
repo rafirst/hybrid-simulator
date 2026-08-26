@@ -7,7 +7,7 @@
     <div class="speed-svg-wrapper">
         <svg width="100%" height="100%" viewBox="0 0 350 180">
             <defs>
-                {{-- Eco-Tech Multi-Phase Gradient (No Blue/Cyan) --}}
+                
                 <linearGradient id="speedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="#00E676" />
                     <stop offset="45%" stop-color="#10B981" />
@@ -71,3 +71,4 @@
         </div>
     </div>
 </div>
+<?php /**PATH C:\laragon\www\hybrid-simulator-git\resources\views/simulator/partials/speedometer.blade.php ENDPATH**/ ?>

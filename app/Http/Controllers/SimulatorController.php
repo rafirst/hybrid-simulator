@@ -12,8 +12,8 @@ class SimulatorController extends Controller
     public function index()
     {
         // Ambil konfigurasi dan model mobil aktif
-        $appTitle = Setting::getVal('app_title', 'HYBRID SYSTEM SIMULATOR');
-        $appSubtitle = Setting::getVal('app_subtitle', 'Pelajari cara kerja sistem hybrid canggih');
+        $appTitle = Setting::getVal('app_title', 'CARA KERJA MESIN HYBRID');
+        $appSubtitle = Setting::getVal('app_subtitle', 'Panduan interaktif memahami sistem penggerak ramah lingkungan.');
         $activeModel = VehicleModel::where('is_active', true)->latest()->first();
 
         // Data mode simulasi hybrid lengkap

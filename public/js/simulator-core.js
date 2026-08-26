@@ -11,7 +11,7 @@ function resizeApp() {
 }
 window.addEventListener('resize', resizeApp);
 
-// Sound Effects Web Audio
+/* Sound Effects Web Audio
 const audioData = {
     'Intro': new Audio('https://audio.jukehost.co.uk/019efcb8-f837-71f1-8285-f7c52d0190b0'),
     'Idle': new Audio('https://audio.jukehost.co.uk/019efcd1-f81b-7096-8f00-4788fe5200e8'),
@@ -34,6 +34,7 @@ function playAudio(modeKey) {
         currentAudio.play().catch(e => console.log("Audio play blocked or unavailable:", e));
     }
 }
+*/
 
 // 6 Operating Modes Data & Engineering Descriptions
 const modeData = {
@@ -71,6 +72,10 @@ const modeData = {
 
 window.simState = { isPoweredOn: false, gear: null, mode: 'Off', currentSpeed: 0, targetSpeed: 0 };
 const state = window.simState;
+const AUTO_MODE_INTERVAL = 20000;
+const autoModeSequence = ['Idle', 'Low', 'Acceleration', 'Constant', 'Deceleration', 'Reverse'];
+let autoModeTimer = null;
+let autoModeIndex = 0;
 
 let ui = {};
 
@@ -107,7 +112,7 @@ function init() {
         modelFileInput: document.getElementById('modelFileInput'),
         uploadStatus: document.getElementById('uploadStatus'),
         bodyColorBtns: document.querySelectorAll('.swatch-btn'),
-        bodyOpacityBtns: document.querySelectorAll('.opacity-btn'),
+        bodyOpacityToggle: document.getElementById('bodyOpacityToggle'),
         panelsToDim: document.querySelectorAll('.dimmed')
     };
 
@@ -124,12 +129,15 @@ function init() {
     ui.modeBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             if (!state.isPoweredOn || e.currentTarget.classList.contains('disabled')) return;
-            setMode(e.currentTarget.getAttribute('data-mode'));
+            const selectedMode = e.currentTarget.getAttribute('data-mode');
+            setMode(selectedMode);
+            resetAutoModeTimer(selectedMode);
         });
     });
 
     animateSpeedometer();
     resetUItoOff();
+    togglePower();
 }
 
 function togglePower() {
@@ -140,10 +148,12 @@ function togglePower() {
         ui.btnD.classList.remove('disabled');
         ui.btnR.classList.remove('disabled');
         
-        playAudio('Intro');
+        // playAudio('Intro');
         changeGear('D'); 
+        startAutoModeLoop();
         logInteraction('power_on', { gear: 'D' });
     } else {
+        stopAutoModeLoop();
         ui.btnPower.classList.remove('on');
         ui.panelsToDim.forEach(p => p.classList.add('dimmed'));
         
@@ -163,6 +173,40 @@ function togglePower() {
         resetUItoOff();
         logInteraction('power_off');
     }
+}
+
+function startAutoModeLoop() {
+    stopAutoModeLoop();
+    autoModeIndex = 0;
+    autoModeTimer = window.setInterval(advanceAutoMode, AUTO_MODE_INTERVAL);
+}
+
+function stopAutoModeLoop() {
+    if (autoModeTimer !== null) {
+        window.clearInterval(autoModeTimer);
+        autoModeTimer = null;
+    }
+}
+
+function resetAutoModeTimer(currentMode) {
+    if (!state.isPoweredOn) return;
+    const selectedIndex = autoModeSequence.indexOf(currentMode);
+    startAutoModeLoop();
+    if (selectedIndex !== -1) autoModeIndex = selectedIndex;
+}
+
+function advanceAutoMode() {
+    if (!state.isPoweredOn) {
+        stopAutoModeLoop();
+        return;
+    }
+
+    autoModeIndex = (autoModeIndex + 1) % autoModeSequence.length;
+    const nextMode = autoModeSequence[autoModeIndex];
+    const nextGear = nextMode === 'Reverse' ? 'R' : 'D';
+
+    if (state.gear !== nextGear) changeGear(nextGear);
+    else setMode(nextMode);
 }
 
 function changeGear(gear) {
@@ -226,11 +270,13 @@ function setMode(modeId) {
         update3DVisuals(data, modeId); 
     }
     
+    /*
     if(modeId === 'Idle' && currentAudio === audioData['Intro']) {
         // biarkan suara intro
     } else {
         playAudio(modeId);
     }
+    */
 
     logInteraction('mode_change', {
         mode: modeId,
@@ -283,10 +329,10 @@ function resetUItoOff() {
         update3DVisuals({engine: false, mg2: false, battery: false, flows: []}, 'Off');
     }
     
-    if(currentAudio) {
+    /* if(currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
-    }
+    } */
 }
 
 function animateSpeedometer() {
@@ -336,21 +382,22 @@ function initCustomizeControls() {
 
     ui.bodyColorBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
-            bodyCustomize.color = btn.getAttribute('data-color') || 'blue';
+            bodyCustomize.color = btn.getAttribute('data-color') || 'white';
             ui.bodyColorBtns.forEach((item) => item.classList.toggle('active', item === btn));
             if (typeof applyBodyCustomization === 'function') applyBodyCustomization();
             logInteraction('customize', { color: bodyCustomize.color });
         });
     });
 
-    ui.bodyOpacityBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            bodyCustomize.opacity = Number(btn.getAttribute('data-opacity'));
-            ui.bodyOpacityBtns.forEach((item) => item.classList.toggle('active', item === btn));
+    if (ui.bodyOpacityToggle) {
+        ui.bodyOpacityToggle.addEventListener('change', () => {
+            bodyCustomize.opacity = ui.bodyOpacityToggle.checked ? 0.5 : 0;
+            const stateLabel = ui.bodyOpacityToggle.parentElement.querySelector('.toggle-state');
+            if (stateLabel) stateLabel.textContent = ui.bodyOpacityToggle.checked ? 'ON' : 'OFF';
             if (typeof applyBodyCustomization === 'function') applyBodyCustomization();
             logInteraction('customize', { opacity: bodyCustomize.opacity });
         });
-    });
+    }
 
     if (ui.btnUploadModel && ui.modelFileInput) {
         ui.btnUploadModel.addEventListener('click', requestUploadPassword);

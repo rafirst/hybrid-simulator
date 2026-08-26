@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 
 INSERT INTO `settings` (`id`, `key`, `value`, `type`, `description`, `created_at`, `updated_at`) VALUES
 (1, 'app_title', 'HYBRID SYSTEM SIMULATOR', 'string', 'Judul utama aplikasi simulator', NOW(), NOW()),
-(2, 'app_subtitle', 'Pelajari cara kerja sistem hybrid canggih', 'string', 'Sub judul penjelasan simulator', NOW(), NOW()),
+(2, 'app_subtitle', 'Panduan interaktif memahami sistem penggerak ramah lingkungan.', 'string', 'Sub judul penjelasan simulator', NOW(), NOW()),
 (3, 'upload_password', 'Dms1234', 'string', 'Password proteksi untuk upload model 3D baru', NOW(), NOW()),
 (4, 'default_body_color', 'blue', 'string', 'Warna bawaan bodi (red, white, blue)', NOW(), NOW()),
 (5, 'default_body_opacity', '0.50', 'float', 'Tingkat transparansi bodi bawaan (0.00 - 1.00)', NOW(), NOW()),

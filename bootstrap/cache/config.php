@@ -116,8 +116,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\laragon\\www\\hybrid-simulator-laravel\\storage\\framework/cache/data',
-        'lock_path' => 'C:\\laragon\\www\\hybrid-simulator-laravel\\storage\\framework/cache/data',
+        'path' => 'C:\\laragon\\www\\hybrid-simulator-git\\storage\\framework/cache/data',
+        'lock_path' => 'C:\\laragon\\www\\hybrid-simulator-git\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -234,14 +234,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\laragon\\www\\hybrid-simulator-laravel\\storage\\logs/laravel.log',
+        'path' => 'C:\\laragon\\www\\hybrid-simulator-git\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\laragon\\www\\hybrid-simulator-laravel\\storage\\logs/laravel.log',
+        'path' => 'C:\\laragon\\www\\hybrid-simulator-git\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -306,7 +306,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\laragon\\www\\hybrid-simulator-laravel\\storage\\logs/laravel.log',
+        'path' => 'C:\\laragon\\www\\hybrid-simulator-git\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -382,7 +382,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\laragon\\www\\hybrid-simulator-laravel\\resources\\views/vendor/mail',
+        0 => 'C:\\laragon\\www\\hybrid-simulator-git\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -690,13 +690,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\laragon\\www\\hybrid-simulator-laravel\\storage\\app',
+        'root' => 'C:\\laragon\\www\\hybrid-simulator-git\\storage\\app',
         'throw' => false,
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\laragon\\www\\hybrid-simulator-laravel\\storage\\app/public',
+        'root' => 'C:\\laragon\\www\\hybrid-simulator-git\\storage\\app/public',
         'url' => 'http://hybrid-simulator-laravel.test/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -717,7 +717,7 @@
     ),
     'links' => 
     array (
-      'C:\\laragon\\www\\hybrid-simulator-laravel\\public\\storage' => 'C:\\laragon\\www\\hybrid-simulator-laravel\\storage\\app/public',
+      'C:\\laragon\\www\\hybrid-simulator-git\\public\\storage' => 'C:\\laragon\\www\\hybrid-simulator-git\\storage\\app/public',
     ),
   ),
   'session' => 
@@ -726,7 +726,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\laragon\\www\\hybrid-simulator-laravel\\storage\\framework/sessions',
+    'files' => 'C:\\laragon\\www\\hybrid-simulator-git\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -747,9 +747,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\laragon\\www\\hybrid-simulator-laravel\\resources\\views',
+      0 => 'C:\\laragon\\www\\hybrid-simulator-git\\resources\\views',
     ),
-    'compiled' => 'C:\\laragon\\www\\hybrid-simulator-laravel\\storage\\framework\\views',
+    'compiled' => 'C:\\laragon\\www\\hybrid-simulator-git\\storage\\framework\\views',
   ),
   'sanctum' => 
   array (

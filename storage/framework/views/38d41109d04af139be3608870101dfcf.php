@@ -98,3 +98,4 @@
         </div>
     </div>
 </div>
+<?php /**PATH C:\laragon\www\hybrid-simulator-git\resources\views/simulator/partials/energy_monitor.blade.php ENDPATH**/ ?>

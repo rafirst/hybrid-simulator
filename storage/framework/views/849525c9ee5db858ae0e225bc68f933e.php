@@ -17,3 +17,4 @@
         </button>
     </div>
 </div>
+<?php /**PATH C:\laragon\www\hybrid-simulator-git\resources\views/simulator/partials/bottom_controls.blade.php ENDPATH**/ ?>

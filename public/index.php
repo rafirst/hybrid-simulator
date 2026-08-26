@@ -41,7 +41,7 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HYBRID SYSTEM SIMULATOR 3D</title>
+        <title>TAG - Alur Kerja Hybrid</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -52,31 +52,19 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
     </head>
     <body>
         <div class="app-wrapper" id="appWrapper">
-            <!-- Left & Right Modern Neutral Branding Logos -->
+            <!-- Left & Right Branding Logos -->
             <div class="logo-left-box">
-                <svg class="logo-left-svg" viewBox="0 0 260 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2" y="2" width="256" height="51" rx="8" fill="rgba(14, 165, 233, 0.08)" stroke="#0ea5e9" stroke-width="1.5"/>
-                    <circle cx="28" cy="27.5" r="14" fill="#0ea5e9" fill-opacity="0.2" stroke="#00ff41" stroke-width="2"/>
-                    <path d="M28 17L33 26H23L28 17Z" fill="#00ff41"/>
-                    <path d="M28 38L23 29H33L28 38Z" fill="#0ea5e9"/>
-                    <text x="52" y="25" fill="#ffffff" font-family="'Rajdhani', sans-serif" font-weight="700" font-size="16" letter-spacing="1.5">HYBRID CARE</text>
-                    <text x="52" y="41" fill="#00ff41" font-family="'Inter', sans-serif" font-weight="700" font-size="11" letter-spacing="2">SYNERGY DRIVE 3D</text>
-                </svg>
+                <img class="logo-left-image" src="images/Logo-Toyota-White.png" alt="Toyota">
             </div>
 
             <div class="logo-right-box">
-                <svg class="logo-right-svg" viewBox="0 0 240 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2" y="2" width="236" height="51" rx="8" fill="rgba(0, 255, 65, 0.08)" stroke="#00ff41" stroke-width="1.5"/>
-                    <path d="M24 16L18 29H28L22 40" stroke="#00ff41" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <text x="44" y="25" fill="#ffffff" font-family="'Rajdhani', sans-serif" font-weight="700" font-size="15" letter-spacing="1">EV & HEV SYSTEM</text>
-                    <text x="44" y="41" fill="#94a3b8" font-family="'Inter', sans-serif" font-weight="600" font-size="11" letter-spacing="1.5">DUAL POWER TECH</text>
-                </svg>
+                <img class="logo-right-image" src="images/Logo-TAG-white.png" alt="TAG">
             </div>
 
             <!-- Top Header Title -->
             <div class="top-header">
-                <h1>HYBRID SYSTEM SIMULATOR</h1>
-                <p>Pelajari cara kerja sistem hybrid canggih</p>
+                <h1>CARA KERJA MESIN HYBRID</h1>
+                <p>Panduan interaktif memahami sistem penggerak ramah lingkungan.</p>
             </div>
 
             <!-- Main Cockpit -->
@@ -108,6 +96,15 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
                         <div class="mode-icon-wrapper"><span style="font-size: 38px; font-weight: 900; color: var(--color-blue);">R</span></div>
                         <div class="mode-text"><span class="mode-text-title">REVERSE</span><span class="mode-text-desc">Gigi mundur<br>menggunakan motor listrik</span></div>
                     </div>
+                    <div class="bottom-bar">
+                        <div class="console-dock">
+                            <button class="gear-btn btn-power" id="btnPower" title="Power">
+                                <svg viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+                            </button>
+                            <button class="gear-btn gear-shift-btn disabled" id="gearD" title="Drive"><span class="gear-letter">D</span></button>
+                            <button class="gear-btn gear-shift-btn disabled" id="gearR" title="Reverse"><span class="gear-letter">R</span></button>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Center Column: 3D Display -->
@@ -127,29 +124,25 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
                             <button class="customize-btn" id="btnCustomize">CUSTOMIZE</button>
                             <div class="customize-panel" id="customizePanel">
                                 <div class="customize-title">
-                                    <span>CUSTOMIZE<br>BODY</span>
-                                    <button class="upload-model-btn" id="btnUploadModel" title="Upload model 3D">
-                                        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="M17 8l-5-5-5 5"></path><path d="M12 3v12"></path></svg>
-                                    </button>
-                                    <input class="model-file-input" id="modelFileInput" type="file" accept=".glb,.gltf">
+                                    <span>3D VEHICLE VIEW<br>VISUALIZATION CONTROL</span>
                                 </div>
                                 <div class="customize-group">
                                     <div class="customize-label">Warna:</div>
                                     <div class="swatch-row" id="bodyColorControls">
-                                        <button class="swatch-btn" data-color="red"></button>
-                                        <button class="swatch-btn" data-color="white"></button>
-                                        <button class="swatch-btn active" data-color="blue"></button>
+                                        <button class="swatch-btn active" data-color="white" aria-label="Putih" title="Platinum White Pearl"></button>
                                     </div>
                                 </div>
                                 <div class="customize-group">
                                     <div class="customize-label">Opacity:</div>
                                     <div class="opacity-row" id="bodyOpacityControls">
-                                        <button class="opacity-btn active" data-opacity="0.5">50%</button>
-                                        <button class="opacity-btn" data-opacity="0.2">20%</button>
-                                        <button class="opacity-btn" data-opacity="0">0%</button>
+                                        <label class="toggle-switch" title="ON: 50% X-Ray, OFF: 0% Rangka">
+                                            <input type="checkbox" id="bodyOpacityToggle" checked>
+                                            <span class="toggle-slider"></span>
+                                            <span class="toggle-state" aria-hidden="true">ON</span>
+                                        </label>
                                     </div>
                                 </div>
-                                <div class="upload-status" id="uploadStatus">Model hybrid 3D siap.</div>
+                                <div class="upload-status" id="uploadStatus">MOBIL: VELOZ HYBRID</div>
                             </div>
                         </div>
                         <div class="center-legend">
@@ -274,16 +267,6 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
                 </div>
             </div>
 
-            <!-- Bottom Bar Controls -->
-            <div class="bottom-bar">
-                <div class="gears-area">
-                    <button class="gear-btn btn-power" id="btnPower" title="Power Start / Stop">
-                        <svg viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
-                    </button>
-                    <button class="gear-btn disabled" id="gearD" title="Drive">D</button>
-                    <button class="gear-btn disabled" id="gearR" title="Reverse">R</button>
-                </div>
-            </div>
         </div>
 
         <script src="js/simulator-3d.js"></script>
