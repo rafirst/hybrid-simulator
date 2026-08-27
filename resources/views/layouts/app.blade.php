@@ -18,7 +18,11 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ asset('css/simulator.css') }}">
+    @if (file_exists(public_path('hot')) || file_exists(public_path('build/manifest.json')))
+        @vite('resources/css/app.css')
+    @else
+        <link rel="stylesheet" href="{{ asset('css/simulator.css') }}">
+    @endif
     @stack('styles')
 </head>
 <body>

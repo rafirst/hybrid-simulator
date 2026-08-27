@@ -18,7 +18,11 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="<?php echo e(asset('css/simulator.css')); ?>">
+    <?php if(file_exists(public_path('hot')) || file_exists(public_path('build/manifest.json'))): ?>
+        <?php echo app('Illuminate\Foundation\Vite')('resources/css/app.css'); ?>
+    <?php else: ?>
+        <link rel="stylesheet" href="<?php echo e(asset('css/simulator.css')); ?>">
+    <?php endif; ?>
     <?php echo $__env->yieldPushContent('styles'); ?>
 </head>
 <body>
