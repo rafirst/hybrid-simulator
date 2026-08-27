@@ -277,7 +277,7 @@ function init3DCar() {
     bodyGeo.computeVertexNormals();
 
     const carMat = new THREE.MeshPhysicalMaterial({
-        color: 0x00e676, transparent: true, opacity: 0.94, 
+        color: 0xef4444, transparent: true, opacity: 0.94,
         roughness: 0.1, transmission: 0.8, thickness: 0.5, 
         side: THREE.DoubleSide, depthWrite: false
     });
@@ -389,7 +389,7 @@ function init3DCar() {
 
         const arrowGeo = new THREE.ShapeGeometry(arrowShape);
         const arrowMat = new THREE.MeshBasicMaterial({
-            color: 0x00ff41, 
+            color: 0xff3333,
             transparent: true, 
             opacity: 0, 
             blending: THREE.AdditiveBlending,
@@ -469,12 +469,12 @@ function init3DCar() {
         flowPaths.push(tube);
     }
 
-    createFlowLine('cableBattMotor', pathBattToFront, 0x00ff41); 
-    createFlowLine('cableBattMotorRev', pathBattToFront, 0x00ff41); 
-    createFlowLine('flowEngMg2Charge', [posEngine, new THREE.Vector3(-8.5, -2.6, 0), posMg2], 0x00ff41); 
+    createFlowLine('cableBattMotor', pathBattToFront, 0xff3333);
+    createFlowLine('cableBattMotorRev', pathBattToFront, 0xff3333);
+    createFlowLine('flowEngMg2Charge', [posEngine, new THREE.Vector3(-8.5, -2.6, 0), posMg2], 0xff3333);
     createFlowLine('flowEngWheel', [posEngine, frontWheelDrivePoint], 0xf59e0b); 
     createFlowLine('flowMgWheel', [posMg2, frontWheelDrivePoint], 0xf59e0b); 
-    createFlowLine('flowWheelMg', [frontWheelDrivePoint, posMg2], 0x00ff41); 
+    createFlowLine('flowWheelMg', [frontWheelDrivePoint, posMg2], 0xff3333); 
 
     window.addEventListener('resize', () => {
         if (!container || !camera || !renderer) return;
@@ -564,7 +564,7 @@ function update3DVisuals(data, modeId) {
     if (!engineMesh) return; 
     
     const colorOnEng = 0xff0000; 
-    const colorOnElec = 0x00ff41; 
+    const colorOnElec = 0xff3333; 
 
     const updateGroupColors = (group, isOn, glowColor) => {
         if (!group) return;

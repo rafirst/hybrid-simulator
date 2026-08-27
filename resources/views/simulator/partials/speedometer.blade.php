@@ -7,29 +7,29 @@
     <div class="speed-svg-wrapper">
         <svg width="100%" height="100%" viewBox="0 0 350 180">
             <defs>
-                {{-- Eco-Tech Multi-Phase Gradient (No Blue/Cyan) --}}
+                {{-- Green dynamic speed gradient --}}
                 <linearGradient id="speedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#00E676" />
-                    <stop offset="45%" stop-color="#10B981" />
-                    <stop offset="68%" stop-color="#84CC16" />
+                    <stop offset="0%" stop-color="#00e676" />
+                    <stop offset="45%" stop-color="#10b981" />
+                    <stop offset="68%" stop-color="#84cc16" />
                     <stop offset="85%" stop-color="#F59E0B" />
                     <stop offset="100%" stop-color="#EF4444" />
                 </linearGradient>
 
                 <filter id="needleGlow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00E676" flood-opacity="0.8"/>
+                    <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#ef4444" flood-opacity="0.8"/>
                 </filter>
             </defs>
 
-            <!-- Background Arc Track Shadow / Glow (Pure Forest Eco Slate) -->
-            <path d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="rgba(0, 230, 118, 0.15)" stroke-width="16" stroke-linecap="round"/>
-            <path d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="#0a2416" stroke-width="10" stroke-linecap="round"/>
+            <!-- Background Arc Track Shadow / Glow -->
+            <path d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="rgba(239, 68, 68, 0.15)" stroke-width="16" stroke-linecap="round"/>
+            <path d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="#2a0808" stroke-width="10" stroke-linecap="round"/>
             
             <!-- Redline Zone Marker -->
             <path d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="#ef4444" stroke-width="10" stroke-linecap="butt" stroke-dasharray="0 253.1 300" opacity="0.4"/>
 
             <!-- Active Speed Dynamic Arc Fill (Connected to JS) -->
-            <path id="speedArcFill" d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="url(#speedGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="455.5" stroke-dashoffset="455.5" style="transition: stroke-dashoffset 0.1s linear; filter: drop-shadow(0 0 8px rgba(0, 255, 135, 0.5));"/>
+            <path id="speedArcFill" d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="url(#speedGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="455.5" stroke-dashoffset="455.5" style="transition: stroke-dashoffset 0.1s linear; filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5));"/>
             
             <!-- Outer Fine Tick Marks -->
             <path d="M 15 160 A 160 160 0 0 1 335 160" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="6" stroke-dasharray="2 22.3" stroke-linecap="butt"/>
@@ -50,13 +50,13 @@
 
             <!-- Speedometer Needle (Rotated by JS) -->
             <g id="speedNeedle" style="transform-origin: 175px 160px; transform: rotate(-90deg); transition: transform 0.1s linear;">
-                <polygon points="172,165 178,165 175,25" fill="#00FF87" filter="url(#needleGlow)"/>
+                <polygon points="172,165 178,165 175,25" fill="#ef4444" filter="url(#needleGlow)"/>
                 <circle cx="175" cy="40" r="2.5" fill="#ffffff"/>
             </g>
             
             <!-- Center Pivot Ring -->
-            <circle cx="175" cy="160" r="14" fill="#05170e" stroke="#00E676" stroke-width="2"/>
-            <circle cx="175" cy="160" r="6" fill="#00E676"/>
+            <circle cx="175" cy="160" r="14" fill="#170505" stroke="#ef4444" stroke-width="2"/>
+            <circle cx="175" cy="160" r="6" fill="#ef4444"/>
         </svg>
 
         <!-- Digital Center Speed Display -->

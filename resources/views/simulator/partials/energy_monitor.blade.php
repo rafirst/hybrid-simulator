@@ -8,13 +8,13 @@
         <svg width="100%" height="100%" viewBox="0 0 350 150" preserveAspectRatio="xMidYMid meet">
             <defs>
                 <pattern id="ecoGrid" width="10" height="10" patternUnits="userSpaceOnUse">
-                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(0, 255, 135, 0.04)" stroke-width="0.5"/>
+                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(239, 68, 68, 0.04)" stroke-width="0.5"/>
                 </pattern>
                 
                 <linearGradient id="chassisGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="rgba(0, 230, 118, 0.14)" />
-                    <stop offset="50%" stop-color="rgba(16, 185, 129, 0.04)" />
-                    <stop offset="100%" stop-color="rgba(0, 230, 118, 0.14)" />
+                    <stop offset="0%" stop-color="rgba(239, 68, 68, 0.14)" />
+                    <stop offset="50%" stop-color="rgba(127, 29, 29, 0.08)" />
+                    <stop offset="100%" stop-color="rgba(239, 68, 68, 0.14)" />
                 </linearGradient>
 
                 <filter id="miniGlowElec" x="-20%" y="-20%" width="140%" height="140%">
@@ -30,32 +30,32 @@
 
             <!-- Futuristic Aerodynamic Vehicle Chassis Silhouette -->
             <path d="M 30,75 Q 30,30 65,22 L 240,22 Q 295,24 315,55 Q 325,75 315,95 Q 295,126 240,128 L 65,128 Q 30,120 30,75 Z" 
-                  fill="url(#chassisGrad)" stroke="#16482c" stroke-width="1.8" stroke-dasharray="8 4"/>
+                  fill="url(#chassisGrad)" stroke="#7f1d1d" stroke-width="1.8" stroke-dasharray="8 4"/>
             
             <!-- Structural Centerline & High Voltage Conduit Tunnel -->
-            <line x1="45" y1="75" x2="300" y2="75" stroke="rgba(52, 211, 153, 0.2)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="45" y1="75" x2="300" y2="75" stroke="rgba(248, 113, 113, 0.2)" stroke-width="1.5" stroke-dasharray="3 3"/>
 
             <!-- 4 Modern Wheels with Alloy Hubs -->
             <!-- Front Wheels (Left) -->
             <g class="wheel-group">
-                <rect x="58" y="8" width="44" height="18" rx="4" fill="#081c11" stroke="#1d5032" stroke-width="1.5"/>
+                <rect x="58" y="8" width="44" height="18" rx="4" fill="#210707" stroke="#7f1d1d" stroke-width="1.5"/>
                 <line x1="64" y1="17" x2="96" y2="17" stroke="#00E676" stroke-width="2" opacity="0.8"/>
-                <rect x="58" y="124" width="44" height="18" rx="4" fill="#081c11" stroke="#1d5032" stroke-width="1.5"/>
+                <rect x="58" y="124" width="44" height="18" rx="4" fill="#210707" stroke="#7f1d1d" stroke-width="1.5"/>
                 <line x1="64" y1="133" x2="96" y2="133" stroke="#00E676" stroke-width="2" opacity="0.8"/>
             </g>
 
             <!-- Rear Wheels (Right) -->
             <g class="wheel-group">
-                <rect x="248" y="8" width="44" height="18" rx="4" fill="#081c11" stroke="#1d5032" stroke-width="1.5"/>
+                <rect x="248" y="8" width="44" height="18" rx="4" fill="#210707" stroke="#7f1d1d" stroke-width="1.5"/>
                 <line x1="254" y1="17" x2="286" y2="17" stroke="#00E676" stroke-width="2" opacity="0.6"/>
-                <rect x="248" y="124" width="44" height="18" rx="4" fill="#081c11" stroke="#1d5032" stroke-width="1.5"/>
+                <rect x="248" y="124" width="44" height="18" rx="4" fill="#210707" stroke="#7f1d1d" stroke-width="1.5"/>
                 <line x1="254" y1="133" x2="286" y2="133" stroke="#00E676" stroke-width="2" opacity="0.6"/>
             </g>
 
             <!-- Static Axles & Drive Mechanical Lines -->
-            <line x1="80" y1="26" x2="80" y2="124" stroke="#1a472c" stroke-width="3" stroke-linecap="round"/>
-            <line x1="270" y1="26" x2="270" y2="124" stroke="#1a472c" stroke-width="3" stroke-linecap="round"/>
-            <line x1="80" y1="75" x2="230" y2="75" stroke="#1a472c" stroke-width="3"/>
+            <line x1="80" y1="26" x2="80" y2="124" stroke="#5b1111" stroke-width="3" stroke-linecap="round"/>
+            <line x1="270" y1="26" x2="270" y2="124" stroke="#5b1111" stroke-width="3" stroke-linecap="round"/>
+            <line x1="80" y1="75" x2="230" y2="75" stroke="#5b1111" stroke-width="3"/>
 
             <!-- Dynamic Animated Flow Overlays (Electric & Mechanic - Controlled by JS) -->
             <path id="miniFlowBatt" class="arrow-flow flow-elec" d="M 230,75 L 140,75" style="display:none;"/>
@@ -74,7 +74,7 @@
             <text x="132.5" y="75" font-size="8" font-family="'Orbitron', sans-serif" font-weight="700" fill="#ffffff" text-anchor="middle" dominant-baseline="central" pointer-events="none">MG2</text>
             
             <!-- 3. Battery Component Box & Multi-Cell Modules -->
-            <rect id="miniBattBox" x="230" y="40" width="50" height="70" rx="8" fill="rgba(6, 20, 13, 0.9)" stroke="#235839" stroke-width="2"/>
+            <rect id="miniBattBox" x="230" y="40" width="50" height="70" rx="8" fill="rgba(25, 5, 5, 0.9)" stroke="#7f1d1d" stroke-width="2"/>
             <text x="255" y="32" font-size="8" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="var(--text-muted)" text-anchor="middle">HEV BATT</text>
             <rect x="235" y="45" width="10" height="60" rx="3" fill="#475569" class="mini-batt-cell"/>
             <rect x="250" y="45" width="10" height="60" rx="3" fill="#475569" class="mini-batt-cell"/>
