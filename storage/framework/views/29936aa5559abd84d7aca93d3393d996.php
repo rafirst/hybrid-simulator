@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <title>TAG - Alur Kerja Hybrid</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/Logo-TAG-favicon-16x16px.png') }}">
+    <link rel="icon" type="image/png" href="<?php echo e(asset('images/Logo-TAG-favicon-16x16px.png')); ?>">
 
     <!-- Google Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,19 +18,19 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ asset('css/simulator.css') }}">
-    @stack('styles')
+    <link rel="stylesheet" href="<?php echo e(asset('css/simulator.css')); ?>">
+    <?php echo $__env->yieldPushContent('styles'); ?>
 </head>
 <body>
 
     <div class="app-wrapper" id="appWrapper">
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/simulator-3d.js') }}"></script>
-    <script src="{{ asset('js/simulator-core.js') }}"></script>
-    @stack('scripts')
+    <script src="<?php echo e(asset('js/simulator-3d.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/simulator-core.js')); ?>"></script>
+    <?php echo $__env->yieldPushContent('scripts'); ?>
 
     <script>
         document.addEventListener('contextmenu', function (event) {
@@ -51,3 +51,4 @@
     </script>
 </body>
 </html>
+<?php /**PATH C:\laragon\www\hybrid-simulator-git\resources\views\layouts\app.blade.php ENDPATH**/ ?>

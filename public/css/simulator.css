@@ -1507,3 +1507,363 @@ html, body {
         transform: scale(0.85);
     }
 }
+
+/* Responsive layout for tablets and phones */
+@media (max-width: 900px) {
+    html,
+    body {
+        width: 100%;
+        min-height: 100%;
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        display: block;
+    }
+
+    .app-wrapper {
+        width: 100%;
+        min-height: 100vh;
+        height: auto;
+        overflow: visible;
+    }
+
+    .cockpit-header {
+        padding: 14px 16px 12px;
+        gap: 12px;
+    }
+
+    .logo-left-image,
+    .logo-right-image {
+        height: 36px;
+        max-width: 82px;
+    }
+
+    .top-header {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .main-system-title {
+        font-size: 22px;
+        letter-spacing: 1.5px;
+    }
+
+    .main-system-subtitle {
+        font-size: 11px;
+        line-height: 1.35;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding: 0 14px 24px;
+        gap: 14px;
+    }
+
+    .left-col,
+    .right-col {
+        width: 100%;
+        flex-shrink: 1;
+    }
+
+    .left-col {
+        order: 1;
+        gap: 12px;
+    }
+
+    .center-col {
+        order: 2;
+        flex: none;
+        gap: 14px;
+    }
+
+    .right-col {
+        order: 3;
+        gap: 14px;
+    }
+
+    .mode-cards-container {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        flex: none;
+    }
+
+    .mode-btn,
+    .mode-btn.active {
+        min-width: 0;
+        transform: none;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .mode-icon-wrapper {
+        width: 38px;
+        height: 38px;
+        border-radius: 9px;
+    }
+
+    .mode-icon-wrapper svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .mode-text-title {
+        font-size: 12px;
+        letter-spacing: 0.3px;
+    }
+
+    .mode-text-desc {
+        font-size: 11px;
+        line-height: 1.25;
+    }
+
+    .car-main-display {
+        height: min(68vw, 500px);
+        min-height: 330px;
+        flex: none;
+    }
+
+    .active-mode-label {
+        top: 12px;
+        left: 12px;
+        padding: 8px 12px;
+        border-radius: 9px;
+    }
+
+    .mode-title-glow {
+        font-size: 18px;
+    }
+
+    .center-legend {
+        top: 12px;
+        right: 12px;
+        max-width: 48%;
+        padding: 8px 10px;
+        gap: 6px;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 9px;
+    }
+
+    .customize-wrap {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        transform: none;
+    }
+
+    .customize-panel {
+        min-width: 0;
+        width: 100%;
+        height: auto;
+        min-height: 52px;
+        padding: 8px 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+        border-radius: 10px;
+    }
+
+    .customize-divider {
+        height: 24px;
+    }
+
+    .cust-primary {
+        font-size: 10px;
+    }
+
+    .cust-sub,
+    .customize-label,
+    .upload-status {
+        font-size: 8px;
+    }
+
+    .customize-group {
+        gap: 6px;
+    }
+
+    .upload-status-box {
+        max-width: 120px;
+    }
+
+    .info-bottom-row {
+        height: auto;
+    }
+
+    .info-box {
+        min-height: 190px;
+        padding: 16px;
+    }
+
+    .penjelasan-content {
+        gap: 14px;
+    }
+
+    .penjelasan-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+    }
+
+    .penjelasan-icon svg {
+        width: 34px;
+        height: 34px;
+    }
+
+    .penjelasan-title {
+        font-size: 18px;
+    }
+
+    .penjelasan-desc {
+        font-size: 12px;
+    }
+
+    .panel-speedo,
+    .panel-energy,
+    .panel-kondisi {
+        height: auto;
+        min-height: 0;
+        padding: 14px 16px;
+    }
+
+    .speed-svg-wrapper {
+        width: min(420px, 100%);
+        height: auto;
+        aspect-ratio: 420 / 200;
+    }
+
+    .speed-val {
+        font-size: 44px;
+    }
+
+    .energy-svg-wrapper {
+        min-height: 220px;
+    }
+
+    .kondisi-list {
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .kondisi-item {
+        padding: 8px 10px;
+    }
+
+    .kondisi-name {
+        gap: 10px;
+    }
+
+    .kondisi-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .kondisi-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .komponen-title {
+        font-size: 12px;
+    }
+
+    .komponen-spec,
+    .kondisi-stat {
+        font-size: 10px;
+    }
+
+    .bottom-bar,
+    .left-col > .bottom-bar {
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+
+    .left-col > .bottom-bar .console-dock {
+        height: auto;
+        min-height: 78px;
+        padding: 8px 14px;
+        gap: 14px;
+    }
+
+    .left-col > .bottom-bar .btn-power,
+    .left-col > .bottom-bar .gear-shift-btn {
+        width: 52px;
+        height: 52px;
+    }
+}
+
+@media (max-width: 520px) {
+    .cockpit-header {
+        align-items: flex-start;
+    }
+
+    .logo-left-image,
+    .logo-right-image {
+        height: 29px;
+        max-width: 62px;
+    }
+
+    .main-system-title {
+        font-size: 15px;
+        line-height: 1.2;
+    }
+
+    .main-system-subtitle {
+        font-size: 9px;
+    }
+
+    .mode-cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .mode-btn,
+    .mode-btn.active {
+        padding: 9px 10px;
+    }
+
+    .car-main-display {
+        height: 390px;
+        min-height: 0;
+    }
+
+    .center-legend {
+        top: auto;
+        right: 10px;
+        bottom: 72px;
+        max-width: calc(100% - 20px);
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 8px;
+    }
+
+    .customize-panel {
+        justify-content: center;
+    }
+
+    .customize-title {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .customize-divider {
+        display: none;
+    }
+
+    .info-box {
+        min-height: 0;
+    }
+
+    .penjelasan-content {
+        align-items: flex-start;
+    }
+
+    .penjelasan-title-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+}

@@ -17,6 +17,6 @@
 
     {{-- Right TAG Branding --}}
     <div class="logo-right-box">
-        <img src="{{ asset('images/Logo-TAG-White.png') }}" alt="TAG" class="logo-right-image">
+        <img src="{{ asset('images/Logo-TAG-white.png') }}" alt="TAG" class="logo-right-image">
     </div>
 </header>

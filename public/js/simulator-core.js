@@ -6,6 +6,12 @@
 function resizeApp() {
     const wrapper = document.getElementById('appWrapper');
     if (!wrapper) return;
+
+    if (window.matchMedia('(max-width: 900px)').matches) {
+        wrapper.style.transform = 'none';
+        return;
+    }
+
     const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
     wrapper.style.transform = `scale(${scale})`;
 }
@@ -72,7 +78,7 @@ const modeData = {
 
 window.simState = { isPoweredOn: false, gear: null, mode: 'Off', currentSpeed: 0, targetSpeed: 0 };
 const state = window.simState;
-const AUTO_MODE_INTERVAL = 20000;
+const AUTO_MODE_INTERVAL = 15000;
 const autoModeSequence = ['Idle', 'Low', 'Acceleration', 'Constant', 'Deceleration', 'Reverse'];
 let autoModeTimer = null;
 let autoModeIndex = 0;

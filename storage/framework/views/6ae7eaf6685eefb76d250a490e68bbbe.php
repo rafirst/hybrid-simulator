@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <title>TAG - Alur Kerja Hybrid</title>
-    <link rel="icon" type="image/png" href="<?php echo e(asset('images/Logo-TAG-Favicon-16x16px.png')); ?>">
+    <link rel="icon" type="image/png" href="<?php echo e(asset('images/Logo-TAG-favicon-16x16px.png')); ?>">
 
     <!-- Google Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

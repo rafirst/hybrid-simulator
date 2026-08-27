@@ -17,4 +17,4 @@
         <img src="<?php echo e(asset('images/Logo-TAG-white.png')); ?>" alt="TAG" class="logo-right-image">
     </div>
 </header>
-<?php /**PATH C:\laragon\www\hybrid-simulator-git\resources\views/simulator/partials/header.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\hybrid-simulator-git\resources\views\simulator\partials\header.blade.php ENDPATH**/ ?>
