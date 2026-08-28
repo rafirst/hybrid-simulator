@@ -219,10 +219,10 @@ function init3DCar() {
     if (!container) return;
     
     scene = new THREE.Scene();
-    scene.background = new THREE.TextureLoader().load('/images/hybrid-bg.png');
+    scene.background = new THREE.TextureLoader().load('/images/hybrid-test.png');
     
     camera = new THREE.PerspectiveCamera(30, container.clientWidth / container.clientHeight, 0.1, 1000);
-    camera.position.set(40, 15, 55); 
+    camera.position.set(48, 8, 70); 
     
     renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
@@ -243,6 +243,7 @@ function init3DCar() {
     scene.add(dirLight);
 
     carGroup = new THREE.Group();
+    carGroup.rotation.y = Math.PI / 6;
     scene.add(carGroup);
 
     // Load actual Toyota Veloz 3D Model
@@ -584,6 +585,11 @@ function update3DVisuals(data, modeId) {
     const updateLbl = (elId, isOn, statusText = null, statusClass = null) => {
         const span = document.getElementById(elId);
         if (!span) return;
+        const pin = span.closest('.label-3d')?.querySelector('.lbl-icon-pin');
+        if (pin) {
+            pin.classList.toggle('active-pin', isOn && statusText !== '(SELF CHARGING)');
+            pin.classList.toggle('charging-pin', isOn && statusText === '(SELF CHARGING)');
+        }
         if(isOn) {
             span.textContent = statusText || '(AKTIF)';
             span.className = statusClass || (statusText === '(SELF CHARGING)' ? 'lbl-self-charging' : 'lbl-on');

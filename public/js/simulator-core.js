@@ -12,8 +12,9 @@ function resizeApp() {
         return;
     }
 
-    const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
-    wrapper.style.transform = `scale(${scale})`;
+    const verticalScale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    const horizontalScale = window.innerWidth / 1920;
+    wrapper.style.transform = `scaleX(${horizontalScale}) scaleY(${verticalScale})`;
 }
 window.addEventListener('resize', resizeApp);
 
@@ -46,7 +47,7 @@ function playAudio(modeKey) {
 const modeData = {
     'Idle': {
         title: 'START / IDLE', speed: 0,
-        detailHtml: 'Mesin bensin mati untuk menghemat bahan bakar.<br><br>Sistem <span class="highlight-text">READY</span> untuk dijalankan. Seluruh sistem kelistrikan bersiaga penuh menanti instruksi pengemudi.',
+        detailHtml: 'Mesin bensin mati untuk menghemat bahan bakar.<br>Sistem <span class="highlight-text">READY</span> untuk dijalankan. Seluruh sistem kelistrikan bersiaga penuh menanti instruksi pengemudi.',
         engine: false, mg2: false, battery: true, flows: [] 
     },
     'Low': {
@@ -56,22 +57,22 @@ const modeData = {
     },
     'Acceleration': {
         title: 'ACCELERATION', speed: 65,
-        detailHtml: 'Kombinasi dorongan tenaga maksimal dari <span class="highlight-text">Mesin Bensin</span> dan sokongan <span class="highlight-text">Baterai Listrik</span> (melalui Motor MG2) bekerja secara bersamaan.<br><br>Memberikan torsi akselerasi instan yang kuat dan responsif seketika.',
+        detailHtml: 'Kombinasi dorongan tenaga maksimal dari <span class="highlight-text">Mesin Bensin</span> dan sokongan <span class="highlight-text">Baterai Listrik</span> (melalui Motor MG2) bekerja secara bersamaan.<br>Memberikan torsi akselerasi instan yang kuat dan responsif seketika.',
         engine: true, mg2: true, battery: true, flows: ['cableBattMotor', 'flowMgWheel', 'flowEngWheel', 'miniFlowBatt', 'miniFlowMotor', 'miniFlowEng']
     },
     'Constant': {
         title: 'CONSTANT SPEED', speed: 80,
-        detailHtml: 'Mobil melaju stabil, <span class="highlight-mech">utamanya digerakkan oleh Mesin Bensin pada putaran paling efisien</span>.<br><br>Sebagian kecil tenaga dari putaran roda dan mesin dialihkan untuk memutar Generator (MG1) guna <span class="highlight-text">mengisi ulang daya Baterai</span> secara otomatis tanpa perlu colok listrik.',
+        detailHtml: 'Mobil melaju stabil, <span class="highlight-mech">utamanya digerakkan oleh Mesin Bensin pada putaran paling efisien</span>.<br>Sebagian kecil tenaga dari putaran roda dan mesin dialihkan untuk memutar Generator (MG1) guna <span class="highlight-text">mengisi ulang daya Baterai</span> secara otomatis tanpa perlu colok listrik.',
         engine: true, mg2: false, battery: true, flows: ['flowEngWheel', 'flowEngMg2Charge', 'cableBattMotorRev', 'miniFlowEng', 'miniFlowEngGen', 'miniFlowCharge'] 
     },
     'Deceleration': {
         title: 'DECELERATION', speed: 45,
-        detailHtml: 'Sistem memutus bahan bakar. Mesin Bensin otomatis dimatikan.<br><br>Energi kinetik mobil saat mengerem dimanfaatkan kembali oleh Motor Listrik (MG2) yang berubah menjadi generator untuk <span class="highlight-text">menghasilkan listrik & mengisi Baterai</span> secara gratis (Regenerative Braking).',
+        detailHtml: 'Sistem memutus bahan bakar. Mesin Bensin otomatis dimatikan.<br>Energi kinetik mobil saat mengerem dimanfaatkan kembali oleh Motor Listrik (MG2) yang berubah menjadi generator untuk <span class="highlight-text">menghasilkan listrik & mengisi Baterai</span> secara gratis (Regenerative Braking).',
         engine: false, mg2: true, battery: true, flows: ['flowWheelMg', 'cableBattMotorRev', 'miniFlowCharge', 'miniFlowWheelMg'] 
     },
     'Reverse': {
         title: 'REVERSE', speed: 15,
-        detailHtml: 'Kendaraan bergerak mundur sepenuhnya digerakkan oleh tenaga putaran terbalik dari <span class="highlight-text">Motor Listrik (MG2)</span>.<br><br>Mesin bensin dibiarkan tetap mati, membuat proses parkir atau mundur menjadi sangat presisi, halus, dan hening.',
+        detailHtml: 'Kendaraan bergerak mundur sepenuhnya digerakkan oleh tenaga putaran terbalik dari <span class="highlight-text">Motor Listrik (MG2)</span>.<br>Mesin bensin dibiarkan tetap mati, membuat proses parkir atau mundur menjadi sangat presisi, halus, dan hening.',
         engine: false, mg2: true, battery: true, flows: ['cableBattMotor', 'flowMgWheel', 'miniFlowBatt', 'miniFlowMotor']
     }
 };
@@ -258,7 +259,7 @@ function setMode(modeId) {
     ui.descTitle.textContent = data.title;
     ui.descText.innerHTML = data.detailHtml;
 
-    const activeStatusClass = 'txt-yellow';
+    const activeStatusClass = 'txt-green';
     const batteryStatusText = ['Constant', 'Deceleration'].includes(modeId) ? 'Charging' : 'Aktif';
     const batteryStatusClass = batteryStatusText === 'Charging' ? 'txt-green' : activeStatusClass;
     updateStatusLabel(ui.lblEngine, ui.statEngine, data.engine, ui.nameEngine, ui.iconEngine, activeStatusClass);
@@ -296,7 +297,7 @@ function setMode(modeId) {
     });
 }
 
-function updateStatusLabel(lblEl, statEl, isActif, nameEl, iconEl, activeStatusClass = 'txt-yellow', activeStatusText = 'Aktif') {
+function updateStatusLabel(lblEl, statEl, isActif, nameEl, iconEl, activeStatusClass = 'txt-green', activeStatusText = 'Aktif') {
     if (!statEl) return;
     const colorClassTxt = isActif ? activeStatusClass : 'txt-red';
     statEl.textContent = isActif ? activeStatusText : 'Mati';

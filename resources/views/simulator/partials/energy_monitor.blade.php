@@ -1,7 +1,7 @@
 <div class="panel panel-energy dimmed" id="panelEnergyMini">
     <div class="panel-header-row">
         <div class="panel-tag">POWERTRAIN TELEMETRY</div>
-        <h3>ENERGY FLOW MONITOR</h3>
+        <h3>ENERGY MONITOR</h3>
     </div>
 
     <div class="energy-svg-wrapper">
@@ -69,7 +69,7 @@
             
             <!-- 3. Battery Component Box & Multi-Cell Modules -->
             <rect id="miniBattBox" x="230" y="40" width="50" height="70" rx="8" fill="rgba(25, 5, 5, 0.9)" stroke="#7f1d1d" stroke-width="2"/>
-            <text x="255" y="32" font-size="8" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="var(--text-muted)" text-anchor="middle">HEV BATT</text>
+            <text x="286" y="75" font-size="8" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="var(--text-muted)" text-anchor="start" dominant-baseline="central">BATT</text>
             <rect x="235" y="45" width="10" height="60" rx="3" fill="#475569" class="mini-batt-cell"/>
             <rect x="250" y="45" width="10" height="60" rx="3" fill="#475569" class="mini-batt-cell"/>
             <rect x="265" y="45" width="10" height="60" rx="3" fill="#475569" class="mini-batt-cell"/>

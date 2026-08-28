@@ -16,9 +16,6 @@
                     <stop offset="100%" stop-color="#475569" />
                 </linearGradient>
 
-                <filter id="needleGlow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#ef4444" flood-opacity="0.8"/>
-                </filter>
             </defs>
 
             <!-- Background Arc Track Shadow / Glow -->
@@ -29,7 +26,7 @@
             <path d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="#ef4444" stroke-width="10" stroke-linecap="butt" stroke-dasharray="0 253.1 300" opacity="0.4"/>
 
             <!-- Active Speed Dynamic Arc Fill (Connected to JS) -->
-            <path id="speedArcFill" d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="url(#speedGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="455.5" stroke-dashoffset="455.5" style="transition: stroke-dashoffset 0.1s linear; filter: drop-shadow(0 0 8px rgba(71, 85, 105, 0.45));"/>
+            <path id="speedArcFill" d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="url(#speedGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="455.5" stroke-dashoffset="455.5" style="transition: stroke-dashoffset 0.1s linear;"/>
             
             <!-- Outer Fine Tick Marks -->
             <path d="M 15 160 A 160 160 0 0 1 335 160" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="6" stroke-dasharray="2 22.3" stroke-linecap="butt"/>
@@ -50,7 +47,7 @@
 
             <!-- Speedometer Needle (Rotated by JS) -->
             <g id="speedNeedle" style="transform-origin: 175px 160px; transform: rotate(-90deg); transition: transform 0.1s linear;">
-                <polygon points="172,165 178,165 175,25" fill="#111827" filter="url(#needleGlow)"/>
+                <polygon points="172,165 178,165 175,25" fill="#111827"/>
                 <circle cx="175" cy="40" r="2.5" fill="#111827"/>
             </g>
             

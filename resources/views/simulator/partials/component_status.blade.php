@@ -1,7 +1,7 @@
 <div class="panel panel-kondisi dimmed" id="panelKondisi">
     <div class="panel-header-row">
         <div class="panel-tag">HARDWARE TELEMETRY</div>
-        <h3>STATUS KOMPONEN UTAMA</h3>
+        <h3>STATUS KOMPONEN</h3>
     </div>
 
     <div class="kondisi-list">
