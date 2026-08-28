@@ -516,6 +516,7 @@ function update3DLabels() {
 function animate3D() {
     requestAnimationFrame(animate3D);
     if (controls) controls.update();
+    if (carGroup) carGroup.rotation.y += 0.0012;
 
     if (stageMesh && camera) {
         const cameraHeightRatio = camera.position.y / camera.position.length();
