@@ -97,7 +97,7 @@
   ),
   'cache' => 
   array (
-    'default' => 'database',
+    'default' => 'file',
     'stores' => 
     array (
       'array' => 

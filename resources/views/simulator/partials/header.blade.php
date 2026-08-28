@@ -2,7 +2,7 @@
 <header class="cockpit-header">
     {{-- Left Toyota Branding --}}
     <div class="logo-left-box">
-        <img src="{{ asset('images/Logo-Toyota-White.png') }}" alt="Toyota" class="logo-left-image">
+        <img src="{{ asset('images/Logo-Toyota-ori.png') }}" alt="Toyota" class="logo-left-image">
     </div>
 
     {{-- Center Header & System Status --}}
@@ -17,6 +17,6 @@
 
     {{-- Right TAG Branding --}}
     <div class="logo-right-box">
-        <img src="{{ asset('images/Logo-TAG-white.png') }}" alt="TAG" class="logo-right-image">
+        <img src="{{ asset('images/Logo-TAG-ori.png') }}" alt="TAG" class="logo-right-image">
     </div>
 </header>

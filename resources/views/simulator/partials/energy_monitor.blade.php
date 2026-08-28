@@ -17,12 +17,6 @@
                     <stop offset="100%" stop-color="rgba(239, 68, 68, 0.14)" />
                 </linearGradient>
 
-                <filter id="miniGlowElec" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#00E676" flood-opacity="0.8"/>
-                </filter>
-                <filter id="miniGlowMech" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#F59E0B" flood-opacity="0.8"/>
-                </filter>
             </defs>
 
             <!-- Blueprint Background Grid -->

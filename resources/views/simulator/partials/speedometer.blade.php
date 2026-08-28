@@ -7,13 +7,13 @@
     <div class="speed-svg-wrapper">
         <svg width="100%" height="100%" viewBox="0 0 350 180">
             <defs>
-                {{-- Green dynamic speed gradient --}}
+                {{-- Neutral dynamic speed gradient --}}
                 <linearGradient id="speedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#00e676" />
-                    <stop offset="45%" stop-color="#10b981" />
-                    <stop offset="68%" stop-color="#84cc16" />
-                    <stop offset="85%" stop-color="#F59E0B" />
-                    <stop offset="100%" stop-color="#EF4444" />
+                    <stop offset="0%" stop-color="#475569" />
+                    <stop offset="45%" stop-color="#64748b" />
+                    <stop offset="68%" stop-color="#94a3b8" />
+                    <stop offset="85%" stop-color="#cbd5e1" />
+                    <stop offset="100%" stop-color="#475569" />
                 </linearGradient>
 
                 <filter id="needleGlow" x="-50%" y="-50%" width="200%" height="200%">
@@ -29,13 +29,13 @@
             <path d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="#ef4444" stroke-width="10" stroke-linecap="butt" stroke-dasharray="0 253.1 300" opacity="0.4"/>
 
             <!-- Active Speed Dynamic Arc Fill (Connected to JS) -->
-            <path id="speedArcFill" d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="url(#speedGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="455.5" stroke-dashoffset="455.5" style="transition: stroke-dashoffset 0.1s linear; filter: drop-shadow(0 0 8px rgba(0, 230, 118, 0.5));"/>
+            <path id="speedArcFill" d="M 30 160 A 145 145 0 0 1 320 160" fill="none" stroke="url(#speedGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="455.5" stroke-dashoffset="455.5" style="transition: stroke-dashoffset 0.1s linear; filter: drop-shadow(0 0 8px rgba(71, 85, 105, 0.45));"/>
             
             <!-- Outer Fine Tick Marks -->
             <path d="M 15 160 A 160 160 0 0 1 335 160" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="6" stroke-dasharray="2 22.3" stroke-linecap="butt"/>
 
             <!-- Speed Numbers (0 to 180 km/h) -->
-            <g fill="rgba(255, 255, 255, 0.85)" font-family="'Orbitron', 'Rajdhani', sans-serif" font-size="12" font-weight="600" text-anchor="middle" dominant-baseline="central">
+            <g fill="#111827" font-family="'Orbitron', 'Rajdhani', sans-serif" font-size="12" font-weight="600" text-anchor="middle" dominant-baseline="central">
                 <text x="60" y="155">0</text>
                 <text x="67" y="121">20</text>
                 <text x="87" y="86">40</text>
@@ -50,8 +50,8 @@
 
             <!-- Speedometer Needle (Rotated by JS) -->
             <g id="speedNeedle" style="transform-origin: 175px 160px; transform: rotate(-90deg); transition: transform 0.1s linear;">
-                <polygon points="172,165 178,165 175,25" fill="#ef4444" filter="url(#needleGlow)"/>
-                <circle cx="175" cy="40" r="2.5" fill="#ffffff"/>
+                <polygon points="172,165 178,165 175,25" fill="#111827" filter="url(#needleGlow)"/>
+                <circle cx="175" cy="40" r="2.5" fill="#111827"/>
             </g>
             
             <!-- Center Pivot Ring -->

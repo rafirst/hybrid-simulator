@@ -54,11 +54,11 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
         <div class="app-wrapper" id="appWrapper">
             <!-- Left & Right Branding Logos -->
             <div class="logo-left-box">
-                <img class="logo-left-image" src="images/Logo-Toyota-White.png" alt="Toyota">
+                <img class="logo-left-image" src="images/Logo-Toyota-ori.png" alt="Toyota">
             </div>
 
             <div class="logo-right-box">
-                <img class="logo-right-image" src="images/Logo-TAG-white.png" alt="TAG">
+                <img class="logo-right-image" src="images/Logo-TAG-ori.png" alt="TAG">
             </div>
 
             <!-- Top Header Title -->

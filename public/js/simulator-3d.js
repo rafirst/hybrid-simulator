@@ -580,12 +580,12 @@ function update3DVisuals(data, modeId) {
     updateGroupColors(mg2Mesh, data.mg2, colorOnElec);
     updateGroupColors(batteryMesh, data.battery, colorOnElec);
 
-    const updateLbl = (elId, isOn, statusText = null) => {
+    const updateLbl = (elId, isOn, statusText = null, statusClass = null) => {
         const span = document.getElementById(elId);
         if (!span) return;
         if(isOn) {
             span.textContent = statusText || '(AKTIF)';
-            span.className = 'lbl-on';
+            span.className = statusClass || (statusText === '(SELF CHARGING)' ? 'lbl-self-charging' : 'lbl-on');
         } else {
             span.textContent = '(MATI)';
             span.className = 'lbl-off';
@@ -596,7 +596,10 @@ function update3DVisuals(data, modeId) {
     const batteryStatus = modeId === 'Constant' || modeId === 'Deceleration'
         ? '(SELF CHARGING)'
         : null;
-    updateLbl('st3dBattery', data.battery, batteryStatus);
+    const batteryStatusClass = ['Idle', 'Low', 'Acceleration', 'Reverse'].includes(modeId)
+        ? 'lbl-yellow-active'
+        : null;
+    updateLbl('st3dBattery', data.battery, batteryStatus, batteryStatusClass);
 
     const miniEngBox = document.getElementById('miniEngBox');
     if (miniEngBox) {

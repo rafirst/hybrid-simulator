@@ -258,9 +258,12 @@ function setMode(modeId) {
     ui.descTitle.textContent = data.title;
     ui.descText.innerHTML = data.detailHtml;
 
-    updateStatusLabel(ui.lblEngine, ui.statEngine, data.engine, ui.nameEngine, ui.iconEngine);
-    updateStatusLabel(ui.lblMg2, ui.statMg2, data.mg2, ui.nameMg2, ui.iconMg2);
-    updateStatusLabel(ui.lblBattery, ui.statBattery, data.battery, ui.nameBattery, ui.iconBattery); 
+    const activeStatusClass = 'txt-yellow';
+    const batteryStatusText = ['Constant', 'Deceleration'].includes(modeId) ? 'Charging' : 'Aktif';
+    const batteryStatusClass = batteryStatusText === 'Charging' ? 'txt-green' : activeStatusClass;
+    updateStatusLabel(ui.lblEngine, ui.statEngine, data.engine, ui.nameEngine, ui.iconEngine, activeStatusClass);
+    updateStatusLabel(ui.lblMg2, ui.statMg2, data.mg2, ui.nameMg2, ui.iconMg2, activeStatusClass);
+    updateStatusLabel(ui.lblBattery, ui.statBattery, data.battery, ui.nameBattery, ui.iconBattery, batteryStatusClass, batteryStatusText);
 
     resetFlowsMini();
     data.flows.forEach(flowId => {
@@ -293,10 +296,10 @@ function setMode(modeId) {
     });
 }
 
-function updateStatusLabel(lblEl, statEl, isActif, nameEl, iconEl) {
+function updateStatusLabel(lblEl, statEl, isActif, nameEl, iconEl, activeStatusClass = 'txt-yellow', activeStatusText = 'Aktif') {
     if (!statEl) return;
-    const colorClassTxt = isActif ? 'txt-green' : 'txt-red';
-    statEl.textContent = isActif ? 'Aktif' : 'Mati';
+    const colorClassTxt = isActif ? activeStatusClass : 'txt-red';
+    statEl.textContent = isActif ? activeStatusText : 'Mati';
     statEl.className = `kondisi-stat ${colorClassTxt}`;
 
     if (nameEl && iconEl) {
