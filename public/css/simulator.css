@@ -598,12 +598,12 @@ html, body {
 
 .elec-glow {
     background: var(--color-electric);
-    box-shadow: 0 0 8px var(--color-electric);
+    box-shadow: none;
 }
 
 .mech-glow {
     background: var(--color-mechanic);
-    box-shadow: 0 0 8px var(--color-mechanic);
+    box-shadow: none;
 }
 
 .off-glow {
@@ -1287,7 +1287,7 @@ html, body {
 
 .dot-elec {
     background: var(--color-electric);
-    box-shadow: 0 0 6px var(--color-electric);
+    box-shadow: none;
 }
 
 .panel-energy .dot-elec {
@@ -1301,7 +1301,7 @@ html, body {
 
 .dot-mech {
     background: var(--color-mechanic);
-    box-shadow: 0 0 6px var(--color-mechanic);
+    box-shadow: none;
 }
 
 .dot-off {
