@@ -1126,6 +1126,11 @@ html, body {
     font-weight: 300;
 }
 
+.panel-energy h3,
+.panel-kondisi h3 {
+    font-size: 18px;
+}
+
 .panel-speedo .panel-header-row,
 .panel-energy .panel-header-row,
 .panel-kondisi .panel-header-row {
