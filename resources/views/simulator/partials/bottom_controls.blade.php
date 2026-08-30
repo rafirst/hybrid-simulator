@@ -15,5 +15,13 @@
         <button class="gear-btn gear-shift-btn disabled" id="gearR" title="Reverse">
             <span class="gear-letter">R</span>
         </button>
+        <button type="button" class="gear-btn gear-shift-btn fullscreen-toggle-btn" id="btnFullscreenToggle" title="Mode Layar Penuh">
+            <svg id="iconFsEnter" viewBox="0 0 24 24">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3m11-5v3a2 2 0 0 1-2 2h-3"></path>
+            </svg>
+            <svg id="iconFsExit" viewBox="0 0 24 24" style="display:none;">
+                <path d="M9 3v4a2 2 0 0 1-2 2H3m0 6h4a2 2 0 0 1 2 2v4m10-4v4a2 2 0 0 1-2 2h-4M21 9h-4a2 2 0 0 1-2-2V3"></path>
+            </svg>
+        </button>
     </div>
 </div>

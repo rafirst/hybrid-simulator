@@ -3,6 +3,14 @@
  */
 
 // Responsive Auto-Scale for 1920x1080 Cockpit
+// Wrapper 1920x1080 di-scale agar mengisi PENUH area layar yang tersedia
+// (baik mode normal maupun fullscreen), skala X dan Y dihitung independen
+// dari lebar & tinggi viewport, supaya tidak ada sisa ruang/gap kosong
+// (yang sebelumnya muncul sebagai bar hitam di mode fullscreen).
+function isKioskFullscreenActive() {
+    return !!(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+}
+
 function resizeApp() {
     const wrapper = document.getElementById('appWrapper');
     if (!wrapper) return;
@@ -12,11 +20,62 @@ function resizeApp() {
         return;
     }
 
-    const verticalScale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
-    const horizontalScale = window.innerWidth / 1920;
+    const targetW = window.innerWidth;
+    const targetH = window.innerHeight;
+
+    const horizontalScale = targetW / 1920;
+    const verticalScale = targetH / 1080;
     wrapper.style.transform = `scaleX(${horizontalScale}) scaleY(${verticalScale})`;
 }
 window.addEventListener('resize', resizeApp);
+
+// ================= Fullscreen Toggle Controller =================
+function requestKioskFullscreen(el) {
+    if (el.requestFullscreen) return el.requestFullscreen();
+    if (el.webkitRequestFullscreen) return el.webkitRequestFullscreen();
+    if (el.msRequestFullscreen) return el.msRequestFullscreen();
+}
+
+function exitKioskFullscreen() {
+    if (document.exitFullscreen) return document.exitFullscreen();
+    if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
+    if (document.msExitFullscreen) return document.msExitFullscreen();
+}
+
+function toggleKioskFullscreen() {
+    if (isKioskFullscreenActive()) {
+        exitKioskFullscreen();
+    } else {
+        requestKioskFullscreen(document.documentElement);
+    }
+}
+
+function updateFullscreenIcon() {
+    const iconEnter = document.getElementById('iconFsEnter');
+    const iconExit = document.getElementById('iconFsExit');
+    const btnFullscreen = document.getElementById('btnFullscreenToggle');
+    const active = isKioskFullscreenActive();
+
+    if (iconEnter) iconEnter.style.display = active ? 'none' : 'block';
+    if (iconExit) iconExit.style.display = active ? 'block' : 'none';
+    if (btnFullscreen) btnFullscreen.classList.toggle('active', active);
+    document.body.classList.toggle('is-fullscreen-mode', active);
+}
+
+function initFullscreenToggle() {
+    const btnFullscreen = document.getElementById('btnFullscreenToggle');
+    if (btnFullscreen) btnFullscreen.addEventListener('click', toggleKioskFullscreen);
+
+    ['fullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange'].forEach((evt) => {
+        document.addEventListener(evt, () => {
+            updateFullscreenIcon();
+            resizeApp();
+        });
+    });
+
+    updateFullscreenIcon();
+}
+window.addEventListener('DOMContentLoaded', initFullscreenToggle);
 
 /* Sound Effects Web Audio
 const audioData = {
@@ -72,7 +131,7 @@ const modeData = {
     },
     'Reverse': {
         title: 'REVERSE', speed: 15,
-        detailHtml: 'Kendaraan bergerak mundur sepenuhnya digerakkan oleh tenaga putaran terbalik dari <span class="highlight-text">Motor Listrik (MG2)</span>.<br>Mesin bensin dibiarkan tetap mati, membuat proses parkir atau mundur menjadi sangat presisi, halus, dan hening.',
+        detailHtml: 'Kendaraan bergerak mundur sepenuhnya digerakkan oleh tenaga putaran terbalik dari <span class="highlight-text">Motor Listrik (MG2)</span>.<br><br>Mesin bensin dibiarkan tetap mati, membuat proses parkir atau mundur menjadi sangat presisi, halus, dan hening.',
         engine: false, mg2: true, battery: true, flows: ['cableBattMotor', 'flowMgWheel', 'miniFlowBatt', 'miniFlowMotor']
     }
 };

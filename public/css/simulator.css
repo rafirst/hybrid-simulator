@@ -135,6 +135,41 @@ html, body {
     overflow: hidden;
 }
 
+/* ===== Fullscreen Toggle Button (inside console-dock) ===== */
+.fullscreen-toggle-btn {
+    border-radius: 12px;
+    width: 52px;
+    height: 52px;
+    border-color: rgba(148, 163, 184, 0.3);
+    color: var(--text-muted);
+    background: rgba(241, 245, 249, 0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fullscreen-toggle-btn:hover {
+    transform: none;
+}
+
+.fullscreen-toggle-btn svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.fullscreen-toggle-btn.active {
+    border-color: #ef4444 !important;
+    background: #ef4444 !important;
+    color: #111827 !important;
+}
+
+body.is-fullscreen-mode {
+    background-color: #05070c;
+}
+
 /* Background Cyber Eco Grid Effect */
 .app-wrapper::before {
     content: '';
