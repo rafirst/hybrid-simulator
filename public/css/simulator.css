@@ -343,9 +343,9 @@ body.is-fullscreen-mode {
 }
 
 .selector-subtitle {
-    font-size: 11px;
-    color: var(--text-muted);
-    font-weight: 600;
+    font-size: 13px;
+    color: var(--font-toyota);
+    font-weight: 300;
     letter-spacing: 1px;
 }
 

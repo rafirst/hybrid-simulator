@@ -77,30 +77,52 @@ function initFullscreenToggle() {
 }
 window.addEventListener('DOMContentLoaded', initFullscreenToggle);
 
-/* Sound Effects Web Audio
+/* Sound Effects Web Audio */
 const audioData = {
-    'Intro': new Audio('https://audio.jukehost.co.uk/019efcb8-f837-71f1-8285-f7c52d0190b0'),
-    'Idle': new Audio('https://audio.jukehost.co.uk/019efcd1-f81b-7096-8f00-4788fe5200e8'),
-    'Low': new Audio('https://audio.jukehost.co.uk/019efcd9-7c37-7369-bd5c-5df5e93c78d1'),
-    'Acceleration': new Audio('https://audio.jukehost.co.uk/019efd1d-c7f4-72f4-b388-d2fb1d1688c4'),
-    'Constant': new Audio('https://audio.jukehost.co.uk/019efe03-2c7a-73de-9401-cebd5b29f098'),
-    'Deceleration': new Audio('https://audio.jukehost.co.uk/019efe03-2c7a-726b-8a69-496ef5743dbd'),
-    'Reverse': new Audio('https://audio.jukehost.co.uk/019efe03-2c7a-737b-84e3-012c53cfb038')
+    'Idle': new Audio('https://audio.jukehost.co.uk/01a05aba-9b39-71ff-a220-cb6a3eb42d03'),
+    'Low': new Audio('https://audio.jukehost.co.uk/01a05aba-9b3b-7091-af21-c4c190f44063'),
+    'Acceleration': new Audio('https://audio.jukehost.co.uk/01a05aba-9b54-712f-8138-dfec5b646471'),
+    'Constant': new Audio('https://audio.jukehost.co.uk/01a05aba-9b3d-706e-83f6-85277a06c483'),
+    'Deceleration': new Audio('https://audio.jukehost.co.uk/01a05aba-9b48-70ff-8947-4da851167dae'),
+    'Reverse': new Audio('https://audio.jukehost.co.uk/01a05aba-9b49-73e3-affb-1214626bfc05')
 };
 
 let currentAudio = null;
 
 function playAudio(modeKey) {
-    if (currentAudio) {
+    const nextAudio = audioData[modeKey];
+    if (!nextAudio) return;
+
+    if (currentAudio && currentAudio !== nextAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
     }
-    if (audioData[modeKey]) {
-        currentAudio = audioData[modeKey];
-        currentAudio.play().catch(e => console.log("Audio play blocked or unavailable:", e));
+
+    currentAudio = nextAudio;
+    currentAudio.currentTime = 0;
+    currentAudio.volume = 1;
+
+    const playPromise = currentAudio.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(e => console.log('Audio play blocked or unavailable:', e));
     }
 }
-*/
+
+function resumeAutoplayAudio() {
+    if (!state.isPoweredOn || !state.mode) return;
+    if (audioData[state.mode]) {
+        playAudio(state.mode);
+    }
+}
+
+function stopCurrentAudio() {
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+    }
+}
+
 
 // 6 Operating Modes Data & Engineering Descriptions
 const modeData = {
@@ -138,7 +160,7 @@ const modeData = {
 
 window.simState = { isPoweredOn: false, gear: null, mode: 'Off', currentSpeed: 0, targetSpeed: 0 };
 const state = window.simState;
-const AUTO_MODE_INTERVAL = 15000;
+const AUTO_MODE_INTERVAL = 29500;
 const autoModeSequence = ['Idle', 'Low', 'Acceleration', 'Constant', 'Deceleration', 'Reverse'];
 let autoModeTimer = null;
 let autoModeIndex = 0;
@@ -192,6 +214,12 @@ function init() {
     if (ui.btnD) ui.btnD.addEventListener('click', () => { if(state.isPoweredOn) changeGear('D'); });
     if (ui.btnR) ui.btnR.addEventListener('click', () => { if(state.isPoweredOn) changeGear('R'); });
 
+    ['pointerdown', 'touchstart', 'keydown'].forEach((evt) => {
+        document.addEventListener(evt, () => {
+            if (state.isPoweredOn) resumeAutoplayAudio();
+        }, { once: true });
+    });
+
     ui.modeBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             if (!state.isPoweredOn || e.currentTarget.classList.contains('disabled')) return;
@@ -204,6 +232,11 @@ function init() {
     animateSpeedometer();
     resetUItoOff();
     togglePower();
+    window.setTimeout(() => {
+        if (state.isPoweredOn && state.mode === 'Idle') {
+            playAudio('Idle');
+        }
+    }, 600);
 }
 
 function togglePower() {
@@ -213,13 +246,18 @@ function togglePower() {
         ui.panelsToDim.forEach(p => p.classList.remove('dimmed'));
         ui.btnD.classList.remove('disabled');
         ui.btnR.classList.remove('disabled');
-        
-        // playAudio('Intro');
-        changeGear('D'); 
+
+        changeGear('D');
+        window.setTimeout(() => {
+            if (state.isPoweredOn && state.mode === 'Idle') {
+                playAudio('Idle');
+            }
+        }, 250);
         startAutoModeLoop();
         logInteraction('power_on', { gear: 'D' });
     } else {
         stopAutoModeLoop();
+        stopCurrentAudio();
         ui.btnPower.classList.remove('on');
         ui.panelsToDim.forEach(p => p.classList.add('dimmed'));
         
@@ -338,14 +376,10 @@ function setMode(modeId) {
     if (typeof update3DVisuals === 'function') {
         update3DVisuals(data, modeId); 
     }
-    
-    /*
-    if(modeId === 'Idle' && currentAudio === audioData['Intro']) {
-        // biarkan suara intro
-    } else {
+
+    if (state.isPoweredOn && audioData[modeId]) {
         playAudio(modeId);
     }
-    */
 
     logInteraction('mode_change', {
         mode: modeId,
