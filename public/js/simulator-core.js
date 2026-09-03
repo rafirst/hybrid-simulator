@@ -153,7 +153,7 @@ const modeData = {
     },
     'Reverse': {
         title: 'REVERSE', speed: 15,
-        detailHtml: 'Kendaraan bergerak mundur sepenuhnya digerakkan oleh tenaga putaran terbalik dari <span class="highlight-text">Motor Listrik (MG2)</span>.<br><br>Mesin bensin dibiarkan tetap mati, membuat proses parkir atau mundur menjadi sangat presisi, halus, dan hening.',
+        detailHtml: 'Kendaraan bergerak mundur digerakkan oleh <span class="highlight-text">Motor Listrik (MG2)</span> dengan putaran terbalik.<br>Mesin bensin tetap mati, sehingga parkir dan manuver mundur menjadi presisi, halus, dan senyap.',
         engine: false, mg2: true, battery: true, flows: ['cableBattMotor', 'flowMgWheel', 'miniFlowBatt', 'miniFlowMotor']
     }
 };

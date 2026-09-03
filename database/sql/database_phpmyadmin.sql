@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `vehicle_models` (
 -- --------------------------------------------------------
 
 INSERT INTO `vehicle_models` (`id`, `name`, `file_name`, `file_path`, `mime_type`, `file_size`, `is_active`, `default_color`, `default_opacity`, `meta_data`, `created_at`, `updated_at`) VALUES
-(1, 'Toyota Veloz Hybrid 3D', 'Veloz.glb', 'models/Veloz.glb', 'model/gltf-binary', 5410884, 1, 'blue', 0.50, '{\"scale\": 31.0, \"author\": \"Hybrid Simulator Team\", \"has_xray\": true, \"version\": \"2.0\", \"position_offset\": {\"mg2\": [-5.2, -3.0, 0], \"engine\": [-12.2, -1.6, 0], \"battery\": [1.8, -3.15, 0]}}', NOW(), NOW());
+(1, 'Toyota Veloz Hybrid 3D', 'Veloz-.glb', 'models/Veloz.glb', 'model/gltf-binary', 5410884, 1, 'blue', 0.50, '{\"scale\": 31.0, \"author\": \"Hybrid Simulator Team\", \"has_xray\": true, \"version\": \"2.0\", \"position_offset\": {\"mg2\": [-5.2, -3.0, 0], \"engine\": [-12.2, -1.6, 0], \"battery\": [1.8, -3.15, 0]}}', NOW(), NOW());
 
 -- --------------------------------------------------------
 -- Table structure for table `simulation_logs`

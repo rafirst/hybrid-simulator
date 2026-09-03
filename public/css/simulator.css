@@ -291,7 +291,6 @@ body.is-fullscreen-mode {
     background: var(--bg-panel);
     border: 1px solid var(--border-panel);
     border-radius: 16px;
-    backdrop-filter: blur(14px);
     box-shadow: 0 4px 14px rgba(15, 23, 42, 0.16), inset 0 0 10px rgba(148, 163, 184, 0.08);
     position: relative;
     overflow: hidden;
@@ -367,7 +366,6 @@ body.is-fullscreen-mode {
     border-radius: 14px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
     overflow: hidden;
 }
 
@@ -556,7 +554,6 @@ body.is-fullscreen-mode {
     padding: 10px 20px;
     border-radius: 12px;
     border: 1px solid rgba(239, 68, 68, 0.35);
-    backdrop-filter: blur(10px);
     box-shadow: none;
 }
 
@@ -614,7 +611,6 @@ body.is-fullscreen-mode {
     background: rgba(255, 255, 255, 0.94);
     border: 1px solid rgba(239, 68, 68, 0.32);
     border-radius: 12px;
-    backdrop-filter: blur(10px);
     box-shadow: none;
 }
 
@@ -680,7 +676,6 @@ body.is-fullscreen-mode {
     font-weight: 300;
     letter-spacing: 1px;
     pointer-events: none;
-    backdrop-filter: blur(8px);
     box-shadow: 0 0 15px rgba(239, 68, 68, 0.25);
 }
 
@@ -701,7 +696,6 @@ body.is-fullscreen-mode {
     box-shadow: none;
     transition: opacity 0.3s ease;
     z-index: 8;
-    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -789,7 +783,6 @@ body.is-fullscreen-mode {
     display: flex;
     align-items: center;
     gap: 18px;
-    backdrop-filter: blur(14px);
 }
 
 .customize-title {
@@ -1550,7 +1543,6 @@ body.is-fullscreen-mode {
     border: 1px solid rgba(239, 68, 68, 0.28);
     border-radius: 999px;
     padding: 10px 24px;
-    backdrop-filter: blur(16px);
     box-shadow: none;
 }
 

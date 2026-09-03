@@ -111,7 +111,7 @@ function loadVelozModel() {
     }
 
     const modelUrls = [
-        'models/Veloz.glb',
+        'models/Veloz-.glb',
         '/models/Veloz.glb',
         'assets/Veloz.glb',
         '/assets/Veloz.glb',
